@@ -1,4 +1,7 @@
 import discord
+from functions import sendSuggestion
+
+
 
 class MyClient(discord.Client):
 
@@ -12,7 +15,11 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if message.author == client.user:
             return
-        print('Message from {0.author}: {0.content}'.format(message))
+        query = message.content
+        query = query.lower() 
+        if query.startswith('!anime') or query.startswith('!manga'):
+            await sendSuggestion(query, message)
+        
 
 
     async def on_voice_state_update(self, member, before, after):
