@@ -1,5 +1,7 @@
 import discord
 from functions import sendSuggestion
+import os
+from keep_alive import keep_alive
 
 
 
@@ -57,4 +59,5 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('ODYwODM0NDc4Mzk3NDU2NDA0.YOBAlQ.pvgYSnxPGTa6R4guPYyvaRdF8F8')
+keep_alive()
+client.run(os.environ['TOKEN'])
